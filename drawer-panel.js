@@ -5,25 +5,25 @@ function DrawerPanel() {
   var self = this;
 
   this.enable = function () {
-    if (jQuery("[drawer__screen-canvas]").length === 0) {
-      jQuery("[drawer-panel]").append("<div drawer__screen-canvas></div>");
+    if (jQuery("[drawer-panel__screen-canvas]").length === 0) {
+      jQuery("[drawer-panel]").append("<div drawer-panel__screen-canvas></div>");
     }
 
     if (jQuery("[page-top-nav]").length > 0) {
-      jQuery("[header-panel-drawer]").addClass("header-panel-drawer__page-has-top-nav")
+      jQuery("[drawer-panel__drawer]").addClass("header-panel-drawer__page-has-top-nav")
     }
 
-    jQuery("[drawer__screen-canvas]").on("click", function () {
+    jQuery(document).on("click", "[drawer-panel__screen-canvas]", function () {
       self.closeAll();
     });
   };
 
   this.open = function (drawerIdentifier) {
-    jQuery("[header-panel-drawer]" + drawerIdentifier).addClass('header-panel-drawer--open');
-    jQuery("[drawer__screen-canvas]").addClass('drawer__screen-canvas--open');
+    jQuery("[drawer-panel__drawer]" + drawerIdentifier).addClass('drawer-panel__drawer--open');
+    jQuery("[drawer-panel__screen-canvas]").addClass('drawer-panel__screen-canvas--open');
     jQuery("[drawer-panel]").parents().addClass("no-scroll");
 
-    var canvas = jQuery("[drawer__screen-canvas]");
+    var canvas = jQuery("[drawer-panel__screen-canvas]");
     var pageHeight = jQuery('html').height();
     var panelHeight = canvas.closest("[drawer-panel]").height();
     var height = panelHeight > pageHeight ? panelHeight : pageHeight;
@@ -31,8 +31,8 @@ function DrawerPanel() {
   };
 
   this.close = function (drawerIdentifier) {
-    jQuery("[header-panel-drawer]" + drawerIdentifier).removeClass('header-panel-drawer--open');
-    jQuery("[drawer__screen-canvas]").removeClass('drawer__screen-canvas--open');
+    jQuery("[drawer-panel__drawer]" + drawerIdentifier).removeClass('drawer-panel__drawer--open');
+    jQuery("[drawer-panel__screen-canvas]").removeClass('drawer-panel__screen-canvas--open');
     jQuery("[drawer-panel]").parents().removeClass("no-scroll");
   };
 
@@ -41,7 +41,7 @@ function DrawerPanel() {
   };
 
   this.toggle = function (drawerIdentifier) {
-    if (jQuery("[header-panel-drawer]" + drawerIdentifier).hasClass('header-panel-drawer--open')) {
+    if (jQuery("[drawer-panel__drawer]" + drawerIdentifier).hasClass('drawer-panel__drawer--open')) {
       self.close(drawerIdentifier);
     } else {
       self.open(drawerIdentifier);
