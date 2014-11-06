@@ -1,0 +1,74 @@
+/*html*/
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+/*canvas*/
+[drawer__screen-canvas] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+[drawer__screen-canvas].drawer__screen-canvas--open {
+  display: block;
+}
+
+/*left drawer*/
+[header-panel-drawer] {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: 0.3s;
+
+  box-shadow: 1px 0 1px rgba(0, 0, 0, .24), 2px 0 1px rgba(0, 0, 0, .12);
+
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+
+  z-index: 100;
+}
+
+[header-panel-drawer].header-panel-drawer--open {
+  left: 0;
+}
+
+/*right drawer*/
+[header-panel-drawer][right] {
+  left: inherit;
+  right: -300px;
+
+  box-shadow: -1px 0 1px rgba(0, 0, 0, .24), 2px 0 1px rgba(0, 0, 0, .12);
+}
+
+[header-panel-drawer][right].header-panel-drawer--open {
+  right: 0;
+}
+
+/*top navigation if exists*/
+[page-top-nav] {
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 110;
+}
+
+[header-panel-drawer].header-panel-drawer__page-has-top-nav {
+  padding-top: 60px;
+}
