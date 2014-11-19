@@ -19,6 +19,8 @@ function DrawerPanel() {
   };
 
   this.open = function (drawerIdentifier) {
+    jQuery("[drawer-panel__drawer]" + drawerIdentifier).closest("[drawer-panel]").find("[drawer-panel__drawer]").removeClass('drawer-panel__drawer--open');
+
     jQuery("[drawer-panel__drawer]" + drawerIdentifier).addClass('drawer-panel__drawer--open');
     jQuery("[drawer-panel__screen-canvas]").addClass('drawer-panel__screen-canvas--open');
     jQuery("[drawer-panel]").parents().addClass("no-scroll");
