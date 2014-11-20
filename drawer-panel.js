@@ -10,7 +10,7 @@ function DrawerPanel() {
     }
 
     if (jQuery("[page-top-nav]").length > 0) {
-      jQuery("[drawer-panel__drawer]").addClass("header-panel-drawer__page-has-top-nav")
+      jQuery("[drawer-panel__drawer], [drawer-panel__screen-canvas]").css("top", jQuery("[page-top-nav]").height());
     }
 
     jQuery(document).on("click", "[drawer-panel__screen-canvas]", function () {
@@ -19,22 +19,24 @@ function DrawerPanel() {
   };
 
   this.open = function (drawerIdentifier) {
-    jQuery("[drawer-panel__drawer]" + drawerIdentifier).closest("[drawer-panel]").find("[drawer-panel__drawer]").removeClass('drawer-panel__drawer--open');
+    var parent = jQuery("[drawer-panel__drawer]" + drawerIdentifier).closest("[drawer-panel]");
+    //only allow one drawer open
+    parent.find("[drawer-panel__drawer]").removeClass('drawer-panel__drawer--open');
 
+    //open drawer
     jQuery("[drawer-panel__drawer]" + drawerIdentifier).addClass('drawer-panel__drawer--open');
-    jQuery("[drawer-panel__screen-canvas]").addClass('drawer-panel__screen-canvas--open');
-    jQuery("[drawer-panel]").parents().addClass("no-scroll");
+    parent.find("[drawer-panel__screen-canvas]").addClass('drawer-panel__screen-canvas--open');
 
-    var canvas = jQuery("[drawer-panel__screen-canvas]");
-    var pageHeight = jQuery('html').height();
-    var panelHeight = canvas.closest("[drawer-panel]").height();
-    var height = panelHeight > pageHeight ? panelHeight : pageHeight;
-    canvas.height(height);
+    //prevent page scrolling
+    jQuery("[drawer-panel]").parents().addClass("no-scroll");
   };
 
   this.close = function (drawerIdentifier) {
+    //close drawer
     jQuery("[drawer-panel__drawer]" + drawerIdentifier).removeClass('drawer-panel__drawer--open');
-    jQuery("[drawer-panel__screen-canvas]").removeClass('drawer-panel__screen-canvas--open');
+    jQuery("[drawer-panel__drawer]" + drawerIdentifier).closest("[drawer-panel]").find("[drawer-panel__screen-canvas]").removeClass('drawer-panel__screen-canvas--open');
+
+    //allow page scrolling
     jQuery("[drawer-panel]").parents().removeClass("no-scroll");
   };
 

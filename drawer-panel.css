@@ -1,19 +1,14 @@
-/*html*/
-html {
-  height: 100%;
-  width: 100%;
-}
-
 .no-scroll {
   overflow-y: hidden;
 }
 
 /*canvas*/
 [drawer-panel__screen-canvas] {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 90;
 
   background: rgba(0, 0, 0, 0.2);
@@ -30,17 +25,22 @@ html {
   top: 0;
   left: -280px;
   width: 280px;
-  height: 100%;
+  bottom: 0;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
 
   box-shadow: 1px 0 1px rgba(0, 0, 0, .24), 2px 0 1px rgba(0, 0, 0, .12);
 
-  box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
 
   z-index: 100;
 }
@@ -63,12 +63,4 @@ html {
 
 /*top navigation if exists*/
 [page-top-nav] {
-  height: 60px;
-  position: fixed;
-  width: 100%;
-  z-index: 110;
-}
-
-[drawer-panel__drawer].header-panel-drawer__page-has-top-nav {
-  padding-top: 60px;
 }

@@ -8,7 +8,7 @@
   <meta name='apple-mobile-web-app-capable' content='yes'>
   <meta name='viewport' content='width=device-width,user-scalable=no'>
 
-  <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+  <link rel="stylesheet" href="lib/reset.css">
   <link rel="stylesheet" href="drawer-panel.css">
 
   <style>
@@ -16,6 +16,9 @@
     /*demo style*/
     [page-top-nav] {
       background: #EEE;
+      height: 48px;
+      position: fixed;
+      width: 100%;
     }
 
     .drawer-panel__drawer--open {
@@ -40,7 +43,7 @@
     </div>
   </div>
   <div drawer-panel__drawer right right-drawer>
-    <div style="display: none">
+    <div style="display: block">
       text
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -49,7 +52,7 @@
     </div>
   </div>
   <div drawer-panel__main>
-    <div style="display: none">
+    <div style="display: block">
       text
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -59,7 +62,7 @@
   </div>
 </div>
 
-<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="lib/jquery-2.1.0.min.js"></script>
 <script src="drawer-panel.js"></script>
 <script>
   var DRAWER_PANEL = new DrawerPanel();
